@@ -1,0 +1,75 @@
+**Software Requirements Specification (SRS) for Online Project
+Management System**
+1. **Introduction**
+1. Purpose: The purpose of the online project management system is to provide a
+collaborative platform for managing and tracking projects, tasks, resources, and timelines.
+2. Scope: The system will allow users to create projects, assign tasks to team members,
+monitor progress, allocate resources, and generate reports. It will provide features for task
+management, document sharing, communication, and scheduling.
+3. Definitions, Acronyms, and Abbreviations: None
+2. **System Overview**
+1. System Architecture: The system will be a web-based application built using a three-tier
+architecture (presentation layer, application layer, and data layer).
+2. System Interfaces: The system will have interfaces for project managers, team members,
+and administrators.
+3. User Characteristics: The system will cater to project managers who create and manage
+projects, team members who work on tasks, and administrators who manage system settings
+and user roles.
+4. Constraints: The system should be user-friendly, scalable, and support multiple concurrent
+users.
+3. **Functional Requirements**
+1. User Registration and Login
+- Users should be able to register an account with the system by providing their details.
+- Users should be able to log in to their accounts using their credentials.
+2. Project Management
+- Project managers should be able to create new projects and define project details such as
+title, description, start date, end date, and priority.
+- Project managers should be able to assign team members to projects.
+- Project managers should be able to track project progress and update status.
+3. Task Management
+- Project managers should be able to create tasks within projects and assign them to team
+members.
+- Team members should be able to view their assigned tasks and update their status.
+- Task dependencies and priorities should be defined and managed.
+4. Resource Allocation
+- Project managers should be able to allocate resources (e.g., equipment, materials, or team
+members) to tasks.
+- Resource availability and utilization should be tracked.
+5. Document Sharing
+- Users should be able to upload and share project-related documents and files.
+- Version control and document access control should be implemented.
+6. Communication
+- Users should be able to communicate with team members through messages, comments,
+or discussion threads.
+- Notifications and email alerts should be sent for important updates.
+7. Scheduling and Calendar
+- Users should be able to schedule project-related events, meetings, or milestones.
+- A shared calendar should display important dates and deadlines.
+8. Reporting and Analytics
+- The system should provide reports on project status, task completion, resource utilization,
+and milestones achieved.
+4. **Non-Functional Requirements**
+1. Usability: The system should have an intuitive user interface with easy navigation and clear
+instructions.
+2. Performance: The system should be responsive and handle multiple concurrent users
+efficiently.
+3. Security: The system should implement secure authentication, role-based access control,
+and data encryption.
+4. Reliability: The system should be available 24/7 with minimal downtime for maintenance.
+5. Scalability: The system should be scalable to handle a growing number of users, projects,
+and tasks.
+6. Compatibility: The system should be compatible with major web browsers and devices.
+**Entity-Relationship (ER) Diagram**
+```
++----------------------+
+| User |
++----------------------+
+| - userID (PK) |
+| - name |
+| - email |
+| - password |
++----------------------+
+|
+|
+|
++-----|-----+

@@ -1,0 +1,218 @@
+**Software Requirements Specification (SRS) for Krushi Kendra Online
+Management System**
+**1. Introduction**
+The Krushi Kendra Online Management System is a software application designed to streamline
+and automate the operations of Krushi Kendra, an agricultural service center. The system aims
+to provide a centralized platform for managing various activities related to crop cultivation,
+farmer registration, inventory management, sales, and reporting. This document outlines the
+functional and non-functional requirements of the system, providing a comprehensive
+description of its features and capabilities.
+**2. Functional Requirements**
+2.1. User Management
+- The system shall support multiple user roles such as administrators, farmers, and staff
+members.
+- Users shall be able to register and create their accounts with the system.
+- Administrators shall have the ability to manage user accounts, including creating, updating,
+and deleting them.
+- User authentication and access control mechanisms shall be implemented to ensure secure
+access to the system.
+2.2. Farmer Management
+- Farmers shall be able to register themselves in the system by providing their personal
+information, contact details, and land details.
+- Farmers shall be able to update their profile information, including contact details and land
+information.
+- The system shall maintain a database of registered farmers, allowing staff members to search
+and retrieve farmer information easily.
+- Farmers shall be able to view and track their crop-related activities, including sowing, irrigation,
+fertilization, and harvesting.
+2.3. Crop Management
+- The system shall provide a catalog of various crops along with their details such as cultivation
+methods, preferred soil type, and suitable climate conditions.
+- Staff members shall be able to add new crop entries to the catalog or update existing ones.
+- Farmers shall be able to view the crop catalog and select the crops they intend to cultivate.
+- The system shall generate personalized crop cultivation plans based on the selected crops
+and provide them to the respective farmers.
+2.4. Inventory Management
+- The system shall maintain an inventory of agricultural inputs such as seeds, fertilizers, and
+pesticides.
+- Staff members shall be able to add new items to the inventory, update item quantities, and
+remove items when they are consumed or expired.
+- Farmers shall be able to view the available inventory and request the required items.
+- The system shall track inventory usage and generate alerts when the stock of a particular item
+falls below a predefined threshold.
+2.5. Sales and Billing
+- The system shall support the sale of agricultural produce and other related products.
+- Staff members shall be able to create sales orders, specify the items sold, and calculate the
+total amount due.
+- The system shall generate invoices for sales transactions and provide options for payment.
+- Staff members shall be able to view the sales history, including details of past transactions.
+2.6. Reporting
+- The system shall generate reports on various aspects such as crop cultivation, inventory
+status, sales performance, and financial summaries.
+- Administrators and staff members shall be able to generate reports based on selected
+parameters, such as date range or specific crops.
+- Reports shall be presented in a user-friendly format, allowing for filtering, sorting, and
+exporting options.
+**3. Non-Functional Requirements**
+3.1. Usability
+- The system shall have a user-friendly interface, ensuring ease of use for all types of users.
+- Clear and intuitive navigation shall be implemented to facilitate smooth interaction with the
+system.
+- Adequate user documentation and help resources shall be provided.
+3.2. Performance
+- The system shall be capable of handling a large number of concurrent users without significant
+performance degradation.
+- Response times for critical operations shall be within acceptable limits.
+- The system shall have sufficient storage capacity to handle the expected amount of data.
+3.3. Security
+- The system shall implement appropriate security measures, including user authentication and
+authorization mechanisms, to ensure that only authorized individuals can access and modify the
+system.
+- User passwords shall be securely stored using encryption techniques.
+- The system shall employ secure communication protocols (e.g., HTTPS) to protect data during
+transmission.
+- Data privacy and confidentiality shall be maintained, adhering to relevant regulations and best
+practices.
+3.4. Reliability
+- The system shall be highly reliable and available, minimizing downtime and ensuring
+continuous access for users.
+- Measures such as data backups and redundancy shall be implemented to prevent data loss in
+case of system failures or disasters.
+- The system shall have a mechanism for error handling and recovery, providing appropriate
+error messages to users when errors occur.
+3.5. Scalability
+- The system shall be designed to accommodate future growth and increased user loads.
+- It should be capable of scaling horizontally by adding more servers or vertically by upgrading
+hardware resources to handle increased system demands.
+3.6. Compatibility
+- The system shall be compatible with commonly used web browsers and operating systems.
+- It should adhere to web standards and accessibility guidelines to ensure a consistent user
+experience across different platforms.
+3.7. Performance Testing
+- The system shall undergo performance testing to validate its responsiveness, scalability, and
+stability under various load conditions.
+- Performance benchmarks shall be established to ensure that the system meets the defined
+performance criteria.
+3.8. Maintenance and Support
+- The system shall be designed to facilitate ease of maintenance and future enhancements.
+- Proper documentation shall be provided to aid system administrators and developers in
+understanding and maintaining the system.
+- Technical support shall be available to address user queries, issues, and bug reports in a
+timely manner.
+**4. Constraints**
+- The system development shall adhere to budgetary constraints and timelines specified by the
+project stakeholders.
+- The system shall comply with relevant legal and regulatory requirements related to data
+protection and privacy.
+- The system shall utilize existing infrastructure and technology platforms available at Krushi
+Kendra, considering any limitations they may impose.
+This Software Requirements Specification (SRS) provides a comprehensive overview of the
+functional and non-functional requirements for the Krushi Kendra Online Management System.
+It serves as a foundation for the system design, development, and implementation processes.
++-----------------+
+| User |
++-----------------+
+| User_ID (PK) |
+| Name |
+| Role |
+| Email |
+| Password |
++-----------------+
+|
+|
+| 1
+|
+|
++-----------------+
+| Farmer |
++-----------------+
+| Farmer_ID (PK) |
+| Name |
+| Contact_Number |
+| Email |
+| Land_Details |
++-----------------+
+|
+|
+| N
+|
+|
++-----------------+
+| Crop |
++-----------------+
+| Crop_ID (PK) |
+| Crop_Name |
+| Cultivation_Method |
+| Soil_Type |
+| Climate |
++-----------------+
+|
+|
+| N
+|
+|
++-----------------+
+| Inventory |
++-----------------+
+| Item_ID (PK) |
+| Item_Name |
+| Quantity |
+| Expiry_Date |
++-----------------+
+|
+|
+| N
+|
+|
++-----------------+
+| Sales |
++-----------------+
+| Sales_ID (PK) |
+| Farmer_ID (FK) |
+| Item_ID (FK) |
+| Quantity |
+| Total_Amount |
+| Date |
++-----------------+
+CREATE TABLE User (
+User_ID INT PRIMARY KEY,
+Name VARCHAR(255),
+Role VARCHAR(255),
+Email VARCHAR(255),
+Password VARCHAR(255)
+);
+CREATE TABLE Farmer (
+Farmer_ID INT PRIMARY KEY,
+Name VARCHAR(255),
+Contact_Number VARCHAR(255),
+Email VARCHAR(255),
+Land_Details VARCHAR(255)
+);
+CREATE TABLE Crop (
+Crop_ID INT PRIMARY KEY,
+Crop_Name VARCHAR(255),
+Cultivation_Method VARCHAR(255),
+Soil_Type VARCHAR(255),
+Climate VARCHAR(255)
+);
+CREATE TABLE Inventory (
+Item_ID INT PRIMARY KEY,
+Item_Name VARCHAR(255),
+Quantity INT,
+Expiry_Date DATE
+);
+CREATE TABLE Sales (
+Sales_ID INT PRIMARY KEY,
+Farmer_ID INT,
+Item_ID INT,
+Quantity INT,
+Total_Amount DECIMAL(10, 2),
+Date DATE,
+FOREIGN KEY (Farmer_ID) REFERENCES Farmer(Farmer_ID),
+FOREIGN KEY (Item_ID) REFERENCES Inventory(Item_ID)
+);
+===================================================================
+
+==============================================================
+
+=====================================================

@@ -1,0 +1,12 @@
+git status
+git clone path
+git add .
+git commit -m ""
+git push
+
+sudo apt install docker.io
+sudo docker images
+sudo docker build -t name .
+sudo docker run -d -p filename
+sudo docker ps
+sudo docker kill ...

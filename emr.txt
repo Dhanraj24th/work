@@ -1,0 +1,177 @@
+**Software Requirements Specification (SRS) for Employee Recruitment
+System**
+**1. Introduction**
+The Employee Recruitment System is a software application designed to streamline and
+automate the process of recruiting and hiring new employees. The system aims to provide an
+efficient and organized platform for managing job vacancies, receiving and evaluating
+applications, scheduling interviews, and making hiring decisions. This document outlines the
+functional and non-functional requirements of the system, providing a comprehensive
+description of its features and capabilities.
+**2. Functional Requirements**
+2.1. Job Vacancy Management
+- The system shall allow administrators to create and manage job vacancies, including
+specifying job titles, descriptions, required qualifications, and other relevant details.
+- Administrators shall be able to update and close job vacancies once they are filled or no longer
+available.
+- The system shall provide a user-friendly interface for applicants to view and apply for job
+vacancies.
+2.2. Application Management
+- Applicants shall be able to create accounts in the system and submit their applications for
+specific job vacancies.
+- The system shall capture and store applicant information, including personal details, contact
+information, work experience, education, and resume/CV.
+- Administrators shall have the ability to review and evaluate applications, shortlist candidates,
+and reject applicants.
+2.3. Interview Scheduling
+- The system shall facilitate the scheduling of interviews between administrators and shortlisted
+candidates.
+- Administrators shall be able to view candidate availability and schedule interviews based on
+mutually convenient time slots.
+- The system shall send automated notifications to candidates with interview details and
+reminders.
+2.4. Evaluation and Decision Making
+- Administrators shall have access to evaluation forms or scoring mechanisms to assess
+candidates during interviews or at various stages of the recruitment process.
+- The system shall allow administrators to record their evaluations and make hiring decisions
+based on predefined criteria.
+- Administrators shall be able to communicate hiring decisions to candidates through the
+system.
+2.5. Reporting
+- The system shall generate reports on various recruitment metrics, including the number of job
+vacancies, the number of applications received, the status of each application, and the overall
+recruitment progress.
+- Administrators shall be able to generate custom reports based on specified criteria, such as
+time period or job vacancy type.
+**3. Non-Functional Requirements**
+3.1. Usability
+- The system shall have an intuitive and user-friendly interface, making it easy for administrators
+and applicants to navigate and use its features.
+- Clear instructions and help resources shall be provided within the system to assist users in
+understanding its functionality.
+3.2. Performance
+- The system shall be capable of handling concurrent users and large volumes of data without
+significant performance degradation.
+- Response times for critical operations, such as application submission or interview scheduling,
+shall be within acceptable limits.
+3.3. Security
+- The system shall implement robust security measures to protect applicant and administrative
+data.
+- User authentication and authorization mechanisms shall be employed to ensure secure access
+to the system.
+- The system shall adhere to data privacy regulations and best practices.
+3.4. Reliability
+- The system shall be highly reliable, minimizing downtime and ensuring continuous access for
+users.
+- Data backups and disaster recovery mechanisms shall be in place to prevent data loss.
+3.5. Scalability
+- The system shall be designed to accommodate future growth and increasing user loads.
+- It should be capable of scaling horizontally by adding more servers or vertically by upgrading
+hardware resources.
+3.6. Compatibility
+- The system shall be compatible with commonly used web browsers and operating systems.
+- It should adhere to web standards and accessibility guidelines to ensure a consistent user
+experience.
+3.7. Maintenance and Support
+- The system shall be designed for ease of maintenance and future enhancements.
+- Proper documentation shall be provided to aid system administrators and support personnel.
+- Technical support shall be available to address user
+queries and issues in a timely manner.
+**4. Entity Relationship Diagram**
+Based on the requirements described above, the following entity relationship diagram
+represents the key entities and their relationships in the Employee Recruitment System:
+```
++-------------------+
+| JobVacancy |
++-------------------+
+| VacancyID (PK) |
+| JobTitle |
+| Description |
+| Qualifications |
+| Status |
++-------------------+
+|
+|
+| 1
+|
+|
++-------------------+
+| Application |
++-------------------+
+| ApplicationID (PK)|
+| VacancyID (FK) |
+| ApplicantName |
+| ContactInfo |
+| WorkExperience |
+| Education |
+| Resume/CV |
+| Status |
++-------------------+
+|
+|
+| 1
+|
+|
++-------------------+
+| Interview |
++-------------------+
+| InterviewID (PK) |
+| ApplicationID (FK)|
+| InterviewDate |
+| InterviewTime |
+| Interviewer |
+| Notes |
++-------------------+
+```
+In the diagram:
+- (PK) denotes the primary key of the entity.
+- (FK) denotes the foreign key referencing the primary key of another entity.
+The relationships between the entities are as follows:
+- Each "JobVacancy" can have multiple "Applications" (one-to-many relationship).
+- Each "Application" can have multiple "Interviews" (one-to-many relationship).
+**5. Pictorial Representation**
+Here's a pictorial representation connecting the tables based on the relationships:
+```
++-----------------+ +-----------------+ +-----------------+
+| JobVacancy | | Application | | Interview |
++-----------------+ +-----------------+ +-----------------+
+| VacancyID (PK) | | ApplicationID | | InterviewID (PK)|
+| JobTitle | | VacancyID (FK) | | ApplicationID |
+| Description | | ApplicantName | | InterviewDate |
+| Qualifications | 1 N | ContactInfo | 1 N | InterviewTime |
+| Status | ------ | WorkExperience | ------ | Interviewer |
++-----------------+ | Education | | Notes |
+| Resume/CV | +-----------------+
+| Status |
++-----------------+
+```
+The diagram shows the relationships between the "JobVacancy," "Application," and "Interview"
+entities. Each relationship is labeled with the cardinality (1 to N) and the corresponding foreign
+key (FK). This pictorial representation provides a visual overview of how the tables are
+connected in the Employee Recruitment System.
+CREATE TABLE JobVacancy (
+VacancyID INT PRIMARY KEY,
+JobTitle VARCHAR(255),
+Description VARCHAR(255),
+Qualifications VARCHAR(255),
+Status VARCHAR(255)
+);
+CREATE TABLE Application (
+ApplicationID INT PRIMARY KEY,
+VacancyID INT,
+ApplicantName VARCHAR(255),
+ContactInfo VARCHAR(255),
+WorkExperience VARCHAR(255),
+Education VARCHAR(255),
+ResumeCV VARCHAR(255),
+Status VARCHAR(255),
+FOREIGN KEY (VacancyID) REFERENCES JobVacancy(VacancyID)
+);
+CREATE TABLE Interview (
+InterviewID INT PRIMARY KEY,
+ApplicationID INT,
+InterviewDate DATE,
+InterviewTime TIME,
+Interviewer VARCHAR(255),
+Notes VARCHAR(255),
+FOREIGN KEY (ApplicationID) REFERENCES Application(ApplicationID)
+);
